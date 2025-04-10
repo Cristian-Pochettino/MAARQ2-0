@@ -1,11 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAARQ | Diseño arquitectonico</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAARQ | Generador de Presupuestos</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <script src="main.js" defer></script>
 </head>
-<body>
-    <script src="main.js"></script>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
+
+  <!-- Navegación -->
+  <nav class="bg-gray-800 text-white p-4 flex justify-between">
+    <div class="text-xl font-bold">MAARQ</div>
+    <ul class="flex space-x-4">
+      <li><a href="#inicio" class="hover:underline">Inicio</a></li>
+      <li><a href="#nosotros" class="hover:underline">Nosotros</a></li>
+      <li><a href="#servicios" class="hover:underline">Servicios</a></li>
+      <li><a href="#presupuesto" class="hover:underline">Presupuesto</a></li>
+      <li><a href="#contacto" class="hover:underline">Contacto</a></li>
+    </ul>
+    <button id="modoOscuroBtn" class="ml-4">🌙</button>
+  </nav>
+
+  <!-- Inicio -->
+  <section id="inicio" class="p-6">
+    <h1 class="text-3xl font-bold mb-4">Bienvenido a MAARQ</h1>
+    <p>Tu herramienta para generar presupuestos arquitectónicos de forma rápida y personalizada.</p>
+  </section>
+
+  <!-- Nosotros -->
+  <section id="nosotros" class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Nosotros</h2>
+    <p>Somos un estudio de arquitectura dedicado a ofrecer soluciones innovadoras y accesibles para tus proyectos de construcción y remodelación.</p>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Servicios</h2>
+    <ul class="list-disc list-inside">
+      <li>Construcción de Viviendas</li>
+      <li>Remodelaciones de Cocinas y Baños</li>
+      <li>Proyectos Arquitectónicos Completos</li>
+      <li>Supervisión de Obras</li>
+    </ul>
+  </section>
+
+  <!-- Presupuesto -->
+  <section id="presupuesto" class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Generar Presupuesto</h2>
+    <label for="tipoServicio" class="block mb-2 font-semibold">Tipo de Servicio:</label>
+    <select id="tipoServicio" class="w-full p-2 rounded border mb-4">
+      <option value="">Selecciona un servicio</option>
+      <option value="vivienda">Construcción de Vivienda</option>
+      <option value="remodelacion">Remodelación de Cocina/Baño</option>
+      <option value="proyecto">Proyecto Arquitectónico</option>
+      <option value="supervision">Supervisión de Obra</option>
+    </select>
+
+    <form id="formularioPresupuesto" class="space-y-4"></form>
+    <button id="generarPDF" class="bg-blue-600 text-white px-4 py-2 rounded">Guardar Presupuesto</button>
+  </section>
+
+  <!-- Galería o imágenes adjuntas -->
+  <section id="imagenes" class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Imágenes del Proyecto</h2>
+    <input type="file" id="inputImagenes" multiple accept="image/*" class="mb-4 block">
+    <div id="vistaPrevia" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Contacto</h2>
+    <form id="formContacto" class="space-y-4">
+      <input type="text" placeholder="Nombre" class="w-full p-2 rounded border">
+      <input type="email" placeholder="Correo electrónico" class="w-full p-2 rounded border">
+      <textarea placeholder="Mensaje" rows="4" class="w-full p-2 rounded border"></textarea>
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Enviar</button>
+    </form>
+  </section>
+
 </body>
 </html>
