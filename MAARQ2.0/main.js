@@ -1,5 +1,3 @@
-// app.js
-
 // Modo oscuro
 const modoOscuroBtn = document.getElementById('modoOscuroBtn');
 modoOscuroBtn.addEventListener('click', () => {
